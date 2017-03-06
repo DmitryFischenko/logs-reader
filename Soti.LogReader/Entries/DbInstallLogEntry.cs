@@ -9,5 +9,6 @@ namespace Soti.LogReader.Entries
     public class DbInstallLogEntry : LogEntry
     {
         public bool IsDacpack => Level == Level.DacPac;
+        public string DacpackStatus { get; set; }
     }
 }

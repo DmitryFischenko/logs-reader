@@ -34,6 +34,9 @@ namespace Soti.LogReader.Parsers
                 entry.Level = level;
             else
                 Console.WriteLine("Unknown level : {0}", type);
+
+            entry.Message = text.Substring(colonIndex + 1).Trim();
+
             return entry;
         }
     }

@@ -43,6 +43,7 @@
     <Compile Include="Configuration\FileLocateConfig.cs" />
     <Compile Include="Configuration\ILogConfiguration.cs" />
     <Compile Include="Configuration\LogConfiguration.cs" />
+    <Compile Include="IEntryMessageParser.cs" />
     <Compile Include="Entries\DbInstallLogEntry.cs" />
     <Compile Include="Entries\Level.cs" />
     <Compile Include="Entries\LogEntry.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="LogFileProcessor.cs" />
     <Compile Include="LogFileReader.cs" />
     <Compile Include="Log\Log.cs" />
+    <Compile Include="Parsers\DacPacDeployStatusParser.cs" />
     <Compile Include="Parsers\DbInstallEntryParser.cs" />
     <Compile Include="Parsers\DbInstallEntryStartChecker.cs" />
     <Compile Include="Parsers\IEntryParser.cs" />
