@@ -50,12 +50,14 @@
     <Compile Include="FileLocator.cs" />
     <Compile Include="ILogFileReader.cs" />
     <Compile Include="ILogFileProcessor.cs" />
+    <Compile Include="Locators\ILocator.cs" />
     <Compile Include="LogFileProcessor.cs" />
     <Compile Include="LogFileReader.cs" />
     <Compile Include="Log\Log.cs" />
     <Compile Include="Parsers\DacPacDeployStatusParser.cs" />
     <Compile Include="Parsers\DbInstallEntryParser.cs" />
     <Compile Include="Parsers\DbInstallEntryStartChecker.cs" />
+    <Compile Include="Parsers\DbInstall\DacpacSuccessLocator.cs" />
     <Compile Include="Parsers\IEntryParser.cs" />
     <Compile Include="Parsers\IEntryStartChecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

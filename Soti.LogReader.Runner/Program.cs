@@ -42,14 +42,12 @@ namespace Soti.LogReader.Runner
 
                 foreach (var item in entries)
                 {
-                    extraParsers.ForEach(p => p.Parse(item));
-                }
-
+                    extraParsers.ForEach(p => p.Parse(item));                    
+                }                
 
                 Console.WriteLine(@"File {0} has {1} entries. Errors {2}. Dacpack: {3}", fileInfo.Name, entries.Count(), entries.Count(e=>e.IsParseError), entries.Count(e=>e.IsDacpack));
 
                 entries.Where(e => e.DacpackStatus == "SUCCESS").ToList().ForEach(e => Console.WriteLine(e.Message));
-
 
                 var errors = entries.Where(e => e.IsParseError).ToList();
             }
