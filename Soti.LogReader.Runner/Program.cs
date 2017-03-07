@@ -17,7 +17,7 @@ namespace Soti.LogReader.Runner
         {
             var config = new FileLocateConfig
             {
-                Directories = new List<string>() { @"C:\" },
+                Directories = new List<string>() { @"C:\Dev\log-examples\dbinstall" },
                 FileMasks = new List<string>() { @"DBInstall.log(.\d*)?" }
             };
 
@@ -36,17 +36,21 @@ namespace Soti.LogReader.Runner
             var logFileProcesser = new LogFileProcessor();
 
             var extraParsers = new List<IEntryMessageParser> { new DacPacDeployStatusParser() };
-            var collectors = new List<IEntryCollector> {new DacpacSuccessLocator()};
+            var collectors = new List<IEntryCollector> {new DacpacSuccessLocator(), new DbInstallStartLocator()};
 
             foreach (var fileInfo in files)
             {
                 var lines = logFileReader.Read(fileInfo).Result;
                 var entries = logFileProcesser.Process(lines.ToArray(), logConfig.StartCheckers.ToArray(), logConfig.EntryParsers.ToArray()).Cast<DbInstallLogEntry>().ToArray();
 
+                var iterator = new EntryIterator<LogEntry>();
+                iterator.SetList(entries);
+
                 foreach (var item in entries)
                 {
+                    iterator.SetCurrent(item);
                     extraParsers.ForEach(p => p.Parse(item));                    
-                    collectors.ForEach(c=>c.Analize(item));
+                    collectors.ForEach(c=>c.Analize(item, iterator));
                 }                
 
                 Console.WriteLine(@"File {0} has {1} entries. Errors {2}. Dacpack: {3}", fileInfo.Name, entries.Count(), entries.Count(e=>e.IsParseError), entries.Count(e=>e.IsDacpack));
@@ -54,6 +58,7 @@ namespace Soti.LogReader.Runner
                 entries.Where(e => e.DacpackStatus == "SUCCESS").ToList().ForEach(e => Console.WriteLine(e.Message));
 
                 var ccc = collectors.First();
+                var dbStart = collectors.Last();
 
                 //var errors = entries.Where(e => e.IsParseError).ToList();
             }

@@ -60,6 +60,7 @@
     <Compile Include="Parsers\DbInstallEntryParser.cs" />
     <Compile Include="Parsers\DbInstallEntryStartChecker.cs" />
     <Compile Include="Parsers\DbInstall\DacpacSuccessLocator.cs" />
+    <Compile Include="Parsers\DbInstall\DbInstallStartLocator.cs" />
     <Compile Include="Parsers\IEntryParser.cs" />
     <Compile Include="Parsers\IEntryStartChecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

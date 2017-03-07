@@ -46,5 +46,10 @@ namespace Soti.LogReader.Locators
         {
             _index = _list.Any() ? 0 : -1;
         }
+
+        public void SetCurrent(T entry)
+        {
+            _index = Array.IndexOf(_list, entry);
+        }
     }
 }

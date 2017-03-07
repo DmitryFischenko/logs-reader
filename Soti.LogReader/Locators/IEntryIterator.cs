@@ -15,5 +15,6 @@ namespace Soti.LogReader.Locators
         void Previous();
         void Last();
         void Reset();
+        void SetCurrent(T entry);
     }
 }

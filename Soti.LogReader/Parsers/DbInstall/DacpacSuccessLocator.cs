@@ -9,7 +9,7 @@ namespace Soti.LogReader.Parsers.DbInstall
     {
         readonly List<LogEntry> _entries = new List<LogEntry>();
 
-        public void Analize(LogEntry entry)
+        public void Analize(LogEntry entry, IEntryIterator<LogEntry> iterator)
         {
             if (entry == null)
                 throw new ArgumentNullException(nameof(entry));

@@ -1,4 +1,5 @@
 ﻿using Soti.LogReader.Entries;
+using Soti.LogReader.Locators;
 
 namespace Soti.LogReader.Parsers
 {
