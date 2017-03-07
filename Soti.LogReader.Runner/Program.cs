@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Soti.LogReader.Configuration;
 using Soti.LogReader.Entries;
+using Soti.LogReader.Locators;
 using Soti.LogReader.Parsers;
+using Soti.LogReader.Parsers.DbInstall;
 
 namespace Soti.LogReader.Runner
 {
@@ -15,7 +17,7 @@ namespace Soti.LogReader.Runner
         {
             var config = new FileLocateConfig
             {
-                Directories = new List<string>() { @"C:\Dev\log-examples\dbinstall" },
+                Directories = new List<string>() { @"C:\" },
                 FileMasks = new List<string>() { @"DBInstall.log(.\d*)?" }
             };
 
@@ -34,6 +36,7 @@ namespace Soti.LogReader.Runner
             var logFileProcesser = new LogFileProcessor();
 
             var extraParsers = new List<IEntryMessageParser> { new DacPacDeployStatusParser() };
+            var collectors = new List<IEntryCollector> {new DacpacSuccessLocator()};
 
             foreach (var fileInfo in files)
             {
@@ -43,13 +46,16 @@ namespace Soti.LogReader.Runner
                 foreach (var item in entries)
                 {
                     extraParsers.ForEach(p => p.Parse(item));                    
+                    collectors.ForEach(c=>c.Analize(item));
                 }                
 
                 Console.WriteLine(@"File {0} has {1} entries. Errors {2}. Dacpack: {3}", fileInfo.Name, entries.Count(), entries.Count(e=>e.IsParseError), entries.Count(e=>e.IsDacpack));
 
                 entries.Where(e => e.DacpackStatus == "SUCCESS").ToList().ForEach(e => Console.WriteLine(e.Message));
 
-                var errors = entries.Where(e => e.IsParseError).ToList();
+                var ccc = collectors.First();
+
+                //var errors = entries.Where(e => e.IsParseError).ToList();
             }
 
             Console.ReadKey();

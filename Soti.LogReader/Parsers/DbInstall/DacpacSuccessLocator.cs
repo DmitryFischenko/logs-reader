@@ -1,23 +1,18 @@
 ﻿using Soti.LogReader.Locators;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Soti.LogReader.Entries;
 
 namespace Soti.LogReader.Parsers.DbInstall
 {
-    public class DacpacSuccessLocator : ILocator
+    public class DacpacSuccessLocator : IEntryCollector
     {
-        List<LogEntry> entries = new List<LogEntry>();
-
-        public LogEntry Current => throw new NotImplementedException();
+        readonly List<LogEntry> _entries = new List<LogEntry>();
 
         public void Analize(LogEntry entry)
         {
             if (entry == null)
-                throw new ArgumentNullException("entry");
+                throw new ArgumentNullException(nameof(entry));
 
             var dbInstallLogEntry = entry as DbInstallLogEntry;
             if (dbInstallLogEntry == null)
@@ -26,28 +21,15 @@ namespace Soti.LogReader.Parsers.DbInstall
 
             if (dbInstallLogEntry.DacpackStatus == "SUCCESS")
             {
-                entries.Add(entry);
+                _entries.Add(entry);
             }
         }
 
-        public void MoveForward()
+        public IEntryIterator<LogEntry> GetLocator()
         {
-            throw new NotImplementedException();
-        }
-
-        public void MoveLast()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void MoveNext()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Reset()
-        {
-            throw new NotImplementedException();
+            var locator = new EntryIterator<LogEntry>();
+            locator.SetList(_entries.ToArray());
+            return locator;
         }
     }
 }

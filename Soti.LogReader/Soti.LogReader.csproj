@@ -50,7 +50,9 @@
     <Compile Include="FileLocator.cs" />
     <Compile Include="ILogFileReader.cs" />
     <Compile Include="ILogFileProcessor.cs" />
-    <Compile Include="Locators\ILocator.cs" />
+    <Compile Include="Locators\EntryIterator.cs" />
+    <Compile Include="Locators\IEntryCollector.cs" />
+    <Compile Include="Locators\IEntryIterator.cs" />
     <Compile Include="LogFileProcessor.cs" />
     <Compile Include="LogFileReader.cs" />
     <Compile Include="Log\Log.cs" />
