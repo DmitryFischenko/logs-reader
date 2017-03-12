@@ -12,5 +12,6 @@ namespace Soti.LogReader.Configuration
         public FileLocateConfig FileLocateConfig { get; set; }
         public IEnumerable<IEntryStartChecker> StartCheckers { get; set; }
         public IEnumerable<IEntryParser> EntryParsers { get; set; }
+
     }
 }

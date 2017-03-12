@@ -8,6 +8,7 @@ using Soti.LogReader.Entries;
 using Soti.LogReader.Locators;
 using Soti.LogReader.Parsers;
 using Soti.LogReader.Parsers.DbInstall;
+using System.IO;
 
 namespace Soti.LogReader.Runner
 {
@@ -62,6 +63,19 @@ namespace Soti.LogReader.Runner
 
                 //var errors = entries.Where(e => e.IsParseError).ToList();
             }
+
+            var l = logFileReader.Read(files.First()).Result;
+            var fileWatcher = new FileSystemWatcher();
+            fileWatcher.Path = Path.GetDirectoryName(files.First().FullName);
+            fileWatcher.Filter = files.First().Name;
+            fileWatcher.NotifyFilter = NotifyFilters.LastWrite;
+            fileWatcher.EnableRaisingEvents = true;
+            fileWatcher.Changed += (source, e) =>
+            {
+                var newLines = logFileReader.Read().Result;
+                Console.WriteLine("{0} lines added to the file.", newLines.Count());
+            };
+
 
             Console.ReadKey();
         }

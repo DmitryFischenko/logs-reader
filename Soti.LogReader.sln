@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26206.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soti.LogReader", "Soti.LogReader\Soti.LogReader.csproj", "{1496167E-F02A-43EF-B957-A40DDD1B63C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soti.LogReader.Runner", "Soti.LogReader.Runner\Soti.LogReader.Runner.csproj", "{6784AA30-3833-43F9-9B19-76BC9C2A178F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soti.LogReader.Tests", "Soti.LogReader.Tests\Soti.LogReader.Tests.csproj", "{B4A74E66-B68D-43E1-AE96-9815A27E5B17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C46AB2A4-4438-4A30-97B3-83F4DBBF50CD}"
+	ProjectSection(SolutionItems) = preProject
+		todo.txt = todo.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

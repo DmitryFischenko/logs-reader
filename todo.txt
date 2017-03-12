@@ -1,0 +1,5 @@
+Bookmarks
+
+Actions Ex. For saml response log -> move to the corresponding request and vice versa
+
+Parses/Viewers for complex messages like saml request/response,  windows mdm messages etc.
