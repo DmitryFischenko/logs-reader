@@ -1,8 +1,8 @@
-﻿using Soti.LogReader.Entries;
+﻿using Soti.LogReader.Model;
 
-namespace Soti.LogReader.Parsers
+namespace Soti.LogReader.Components.DbInstall
 {
-    public class DacPacDeployStatusParser : IEntryMessageParser
+    public class DacPacDeployStatusParser : IEntryMessageParser<DbInstallLogEntry>
     {
         public void Parse(DbInstallLogEntry entry)
         {

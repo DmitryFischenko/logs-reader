@@ -1,6 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
-using Soti.LogReader.Parsers;
+using Soti.LogReader.Components.DbInstall;
 
 namespace Soti.LogReader.Tests.Parsers.DbInstall
 {

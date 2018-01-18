@@ -40,29 +40,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\IFilter.cs" />
+    <Compile Include="Components\DbInstall\Filters\DacPackOnlyFilter.cs" />
     <Compile Include="Configuration\FileLocateConfig.cs" />
     <Compile Include="Configuration\ILogConfiguration.cs" />
     <Compile Include="Configuration\LogConfiguration.cs" />
-    <Compile Include="IEntryMessageParser.cs" />
-    <Compile Include="Entries\DbInstallLogEntry.cs" />
+    <Compile Include="Model\IEntryMessageParser.cs" />
+    <Compile Include="Components\DbInstall\DbInstallLogEntry.cs" />
     <Compile Include="Entries\Level.cs" />
     <Compile Include="Entries\LogEntry.cs" />
     <Compile Include="FileLocator.cs" />
-    <Compile Include="ILogFileReader.cs" />
-    <Compile Include="ILogFileProcessor.cs" />
+    <Compile Include="Common\ILogFileReader.cs" />
+    <Compile Include="Common\ILogFileProcessor.cs" />
     <Compile Include="Locators\EntryIterator.cs" />
     <Compile Include="Locators\IEntryCollector.cs" />
     <Compile Include="Locators\IEntryIterator.cs" />
-    <Compile Include="LogFileProcessor.cs" />
-    <Compile Include="LogFileReader.cs" />
+    <Compile Include="Common\LogFileProcessor.cs" />
+    <Compile Include="Common\LogFileReader.cs" />
     <Compile Include="Log\Log.cs" />
-    <Compile Include="Parsers\DacPacDeployStatusParser.cs" />
-    <Compile Include="Parsers\DbInstallEntryParser.cs" />
-    <Compile Include="Parsers\DbInstallEntryStartChecker.cs" />
-    <Compile Include="Parsers\DbInstall\DacpacSuccessLocator.cs" />
-    <Compile Include="Parsers\DbInstall\DbInstallStartLocator.cs" />
-    <Compile Include="Parsers\IEntryParser.cs" />
-    <Compile Include="Parsers\IEntryStartChecker.cs" />
+    <Compile Include="Components\DbInstall\DacPacDeployStatusParser.cs" />
+    <Compile Include="Components\DbInstall\DbInstallEntryParser.cs" />
+    <Compile Include="Components\DbInstall\DbInstallEntryStartChecker.cs" />
+    <Compile Include="Components\DbInstall\DacpacSuccessLocator.cs" />
+    <Compile Include="Components\DbInstall\DbInstallStartLocator.cs" />
+    <Compile Include="Model\IEntryParser.cs" />
+    <Compile Include="Model\IEntryStartChecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

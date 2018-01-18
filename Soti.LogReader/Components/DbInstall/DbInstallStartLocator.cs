@@ -1,12 +1,9 @@
 ﻿using Soti.LogReader.Locators;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Soti.LogReader.Entries;
 
-namespace Soti.LogReader.Parsers.DbInstall
+namespace Soti.LogReader.Components.DbInstall
 {
     public class DbInstallStartLocator : IEntryCollector
     {

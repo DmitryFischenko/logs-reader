@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Soti.LogReader.Entries;
 
-namespace Soti.LogReader.Parsers.DbInstall
+namespace Soti.LogReader.Components.DbInstall
 {
     public class DacpacSuccessLocator : IEntryCollector
     {
