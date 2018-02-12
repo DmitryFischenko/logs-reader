@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,9 +45,13 @@
   <ItemGroup>
     <Compile Include="Common\IFilter.cs" />
     <Compile Include="Components\DbInstall\Filters\DacPackOnlyFilter.cs" />
+    <Compile Include="Configuration\Configuration.cs" />
+    <Compile Include="Configuration\ConfigurationProvider.cs" />
     <Compile Include="Configuration\FileLocateConfig.cs" />
     <Compile Include="Configuration\ILogConfiguration.cs" />
+    <Compile Include="Configuration\LogConfigEntry.cs" />
     <Compile Include="Configuration\LogConfiguration.cs" />
+    <Compile Include="Model\ComponentType.cs" />
     <Compile Include="Model\IEntryMessageParser.cs" />
     <Compile Include="Components\DbInstall\DbInstallLogEntry.cs" />
     <Compile Include="Entries\Level.cs" />
@@ -67,7 +74,13 @@
     <Compile Include="Model\IEntryStartChecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="..\config.json">
+      <Link>config.json</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

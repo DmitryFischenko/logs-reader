@@ -1,0 +1,14 @@
+{
+  "Logs": [
+    {
+      "Group": "Installer",
+      "Component": "DbInstall",
+      "Paths": [ "C:/" ]
+    },
+    {
+      "Component": "MS",
+      "Paths": ["C:/ProgramData/SOTI/MobiControl"]
+    }
+  ]
+
+}

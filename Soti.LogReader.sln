@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26206.0
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soti.LogReader", "Soti.LogReader\Soti.LogReader.csproj", "{1496167E-F02A-43EF-B957-A40DDD1B63C5}"
 EndProject
@@ -11,10 +11,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soti.LogReader.Tests", "Sot
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C46AB2A4-4438-4A30-97B3-83F4DBBF50CD}"
 	ProjectSection(SolutionItems) = preProject
+		config.json = config.json
 		todo.txt = todo.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soti.LogReader.GUI", "Soti.LogReader.GUI\Soti.LogReader.GUI\Soti.LogReader.GUI.csproj", "{37FF64DB-3904-42BE-8D71-7FDEAA0421DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soti.LogReader.Viewer", "Soti.LogReader.Viewer\Soti.LogReader.Viewer.csproj", "{A8DAF198-08B2-44C9-AE20-9DFAF07008B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,8 +41,15 @@ Global
 		{37FF64DB-3904-42BE-8D71-7FDEAA0421DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37FF64DB-3904-42BE-8D71-7FDEAA0421DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37FF64DB-3904-42BE-8D71-7FDEAA0421DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8DAF198-08B2-44C9-AE20-9DFAF07008B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8DAF198-08B2-44C9-AE20-9DFAF07008B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8DAF198-08B2-44C9-AE20-9DFAF07008B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8DAF198-08B2-44C9-AE20-9DFAF07008B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8BDF51D6-C9B4-408E-A84D-BB64B6660E9A}
 	EndGlobalSection
 EndGlobal
