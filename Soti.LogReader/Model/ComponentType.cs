@@ -9,6 +9,7 @@ namespace Soti.LogReader.Model
     public enum ComponentType
     {
         DbInstall,
+        McInstall,
         MS,
         DS,
         DSE,

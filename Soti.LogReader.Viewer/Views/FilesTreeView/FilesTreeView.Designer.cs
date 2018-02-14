@@ -1,4 +1,4 @@
-﻿namespace Soti.LogReader.Viewer.Views
+﻿namespace Soti.LogReader.Viewer.Views.FilesTreeView
 {
     partial class FilesTreeView
     {
@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.treeListFiles = new BrightIdeasSoftware.TreeListView();
-            this.colTitle = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.viewModeButton = new System.Windows.Forms.ToolStripButton();
             this.btnAddFile = new System.Windows.Forms.ToolStripButton();
+            this.treeListFiles = new BrightIdeasSoftware.TreeListView();
+            this.colTitle = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeListFiles)).BeginInit();
             this.SuspendLayout();
@@ -48,28 +48,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(477, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // treeListFiles
-            // 
-            this.treeListFiles.AllColumns.Add(this.colTitle);
-            this.treeListFiles.CellEditUseWholeCell = false;
-            this.treeListFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colTitle});
-            this.treeListFiles.Cursor = System.Windows.Forms.Cursors.Default;
-            this.treeListFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeListFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.treeListFiles.Location = new System.Drawing.Point(0, 25);
-            this.treeListFiles.Name = "treeListFiles";
-            this.treeListFiles.ShowGroups = false;
-            this.treeListFiles.Size = new System.Drawing.Size(477, 420);
-            this.treeListFiles.TabIndex = 1;
-            this.treeListFiles.UseCompatibleStateImageBehavior = false;
-            this.treeListFiles.View = System.Windows.Forms.View.Details;
-            this.treeListFiles.VirtualMode = true;
-            // 
-            // colTitle
-            // 
-            this.colTitle.AspectName = "Title";
             // 
             // viewModeButton
             // 
@@ -89,6 +67,32 @@
             this.btnAddFile.Size = new System.Drawing.Size(23, 22);
             this.btnAddFile.Text = "Add files...";
             this.btnAddFile.Click += new System.EventHandler(this.btnAddFile_Click);
+            // 
+            // treeListFiles
+            // 
+            this.treeListFiles.AllColumns.Add(this.colTitle);
+            this.treeListFiles.CellEditUseWholeCell = false;
+            this.treeListFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colTitle});
+            this.treeListFiles.Cursor = System.Windows.Forms.Cursors.Default;
+            this.treeListFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeListFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.treeListFiles.Location = new System.Drawing.Point(0, 25);
+            this.treeListFiles.Name = "treeListFiles";
+            this.treeListFiles.ShowGroups = false;
+            this.treeListFiles.Size = new System.Drawing.Size(477, 420);
+            this.treeListFiles.TabIndex = 1;
+            this.treeListFiles.UseCompatibleStateImageBehavior = false;
+            this.treeListFiles.UseHyperlinks = true;
+            this.treeListFiles.View = System.Windows.Forms.View.Details;
+            this.treeListFiles.VirtualMode = true;
+            this.treeListFiles.CellClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.treeListFiles_CellClick);
+            this.treeListFiles.IsHyperlink += new System.EventHandler<BrightIdeasSoftware.IsHyperlinkEventArgs>(this.treeListFiles_IsHyperlink);
+            // 
+            // colTitle
+            // 
+            this.colTitle.AspectName = "Title";
+            this.colTitle.Hyperlink = true;
             // 
             // FilesTreeView
             // 

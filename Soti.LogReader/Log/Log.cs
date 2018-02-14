@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Soti.LogReader.Configuration;
+using Soti.LogReader.Model;
 
 namespace Soti.LogReader.Log
 {
@@ -16,12 +17,19 @@ namespace Soti.LogReader.Log
         {
             _fileLocateConfig = fileLocateConfig;
         }
+        public ComponentType Type { get; set; }
         public string Title { get; set; }
-        public IEnumerable<FileInfo> Files { get; set; }
+        public IEnumerable<LogFile> Files { get; set; }
+
+        public string Group { get; set; }
 
         public void LocateFiles()
         {
-            Files = new FileLocator().Locate(_fileLocateConfig);
+            Files = new FileLocator().Locate(_fileLocateConfig).OrderByDescending(f => f.LastWriteTime).Select(f => new LogFile()
+            {
+                Type = Type,
+                FileInfo = f
+            }).ToList();
         }
     }
 }

@@ -17,7 +17,9 @@ namespace Soti.LogReader
             if (!config.FileMasks.Any())
                 throw new ArgumentException("No file masks specifed");
 
-            foreach (var configDirectory in config.Directories.Where(d => Directory.Exists(d)))
+            config.Directories = config.Directories.Select(d => d.Replace("{tmp}", Path.GetTempPath()));
+
+            foreach (var configDirectory in config.Directories.Where(Directory.Exists))
             {
                 foreach (var file in Directory.EnumerateFiles(configDirectory))
                 {
@@ -31,7 +33,7 @@ namespace Soti.LogReader
         {
             foreach (var mask in masks)
             {
-                if (Regex.IsMatch(fileName, mask))
+                if (Regex.IsMatch(fileName, mask, RegexOptions.IgnoreCase))
                     return true;
             }
 

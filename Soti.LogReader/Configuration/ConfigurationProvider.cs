@@ -5,18 +5,33 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Soti.LogReader.Model;
 
 namespace Soti.LogReader.Configuration
 {
     public class ConfigurationProvider
     {
-        public Configuration Get()
+        public LogConfigEntry[] Get()
         {
-            LogConfiguration<LogEntry>
-
-            //var fileName = "config.json";
-            //var content = File.ReadAllText(fileName);
-            //return JsonConvert.DeserializeObject<Configuration>(content);
+            return new LogConfigEntry[]
+            {
+                new LogConfigEntry()
+                {
+                    Type = ComponentType.DbInstall,
+                    Title = "DbInstall",
+                    Paths = new[]{ @"C://"},
+                    FileMasks = new [] {@"DBInstall.log(.\d*)?"},
+                    Group = "Installer"
+                },
+                new LogConfigEntry()
+                {
+                    Type = ComponentType.McInstall,
+                    Title = "McInstall",
+                    Paths = new[]{ @"{tmp}"},
+                    FileMasks = new [] {@"McInstall.log"},
+                    Group = "Installer"
+                }
+            };
         }
     }
 }

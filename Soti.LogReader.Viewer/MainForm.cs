@@ -1,6 +1,7 @@
 ﻿using Soti.LogReader.Configuration;
 using Soti.LogReader.Viewer.Views;
 using System.Windows.Forms;
+using Soti.LogReader.Viewer.Views.FilesTreeView;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace Soti.LogReader.Viewer
@@ -18,7 +19,7 @@ namespace Soti.LogReader.Viewer
 
         private void Init()
         {
-            var logs = new ConfigurationProvider().Get();
+
         }
 
         private void ConfigureView()

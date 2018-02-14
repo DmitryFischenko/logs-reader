@@ -51,6 +51,7 @@
     <Compile Include="Configuration\ILogConfiguration.cs" />
     <Compile Include="Configuration\LogConfigEntry.cs" />
     <Compile Include="Configuration\LogConfiguration.cs" />
+    <Compile Include="Log\LogFile.cs" />
     <Compile Include="Model\ComponentType.cs" />
     <Compile Include="Model\IEntryMessageParser.cs" />
     <Compile Include="Components\DbInstall\DbInstallLogEntry.cs" />
