@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Common\IFilter.cs" />
     <Compile Include="Components\DbInstall\Filters\DacPackOnlyFilter.cs" />
+    <Compile Include="Components\McInstall\McInstallEntryParser.cs" />
+    <Compile Include="Components\McInstall\McInstallEntryStartChecker.cs" />
     <Compile Include="Configuration\Configuration.cs" />
     <Compile Include="Configuration\ConfigurationProvider.cs" />
     <Compile Include="Configuration\FileLocateConfig.cs" />

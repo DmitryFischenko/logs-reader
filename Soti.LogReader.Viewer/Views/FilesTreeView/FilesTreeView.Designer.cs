@@ -45,7 +45,7 @@
             this.btnAddFile});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(477, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(178, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -80,7 +80,7 @@
             this.treeListFiles.Location = new System.Drawing.Point(0, 25);
             this.treeListFiles.Name = "treeListFiles";
             this.treeListFiles.ShowGroups = false;
-            this.treeListFiles.Size = new System.Drawing.Size(477, 420);
+            this.treeListFiles.Size = new System.Drawing.Size(178, 381);
             this.treeListFiles.TabIndex = 1;
             this.treeListFiles.UseCompatibleStateImageBehavior = false;
             this.treeListFiles.UseHyperlinks = true;
@@ -98,10 +98,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(178, 406);
             this.Controls.Add(this.treeListFiles);
             this.Controls.Add(this.toolStrip1);
             this.Name = "FilesTreeView";
-            this.Size = new System.Drawing.Size(477, 445);
+            this.Load += new System.EventHandler(this.FilesTreeView_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeListFiles)).EndInit();

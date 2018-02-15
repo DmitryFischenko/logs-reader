@@ -77,7 +77,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\FilesTreeView\FilesTreeView.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\FilesTreeView\FilesTreeView.Designer.cs">
       <DependentUpon>FilesTreeView.cs</DependentUpon>
@@ -87,6 +87,13 @@
     <Compile Include="Views\FilesTreeView\Model\ITreeViewItem.cs" />
     <Compile Include="Views\FilesTreeView\Model\LogViewModel.cs" />
     <Compile Include="Views\FilesTreeView\Model\ViewModel.cs" />
+    <Compile Include="Views\FileTableView\FileTableView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FileTableView\FileTableView.Designer.cs">
+      <DependentUpon>FileTableView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewManager.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FilesTreeView\FilesTreeView.resx">
       <DependentUpon>FilesTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FileTableView\FileTableView.resx">
+      <DependentUpon>FileTableView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -127,5 +137,6 @@
       <Name>Soti.LogReader</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

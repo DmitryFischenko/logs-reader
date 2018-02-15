@@ -5,10 +5,11 @@ using System.Linq;
 using System.Windows.Forms;
 using Soti.LogReader.Configuration;
 using Soti.LogReader.Viewer.Views.FilesTreeView.Model;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace Soti.LogReader.Viewer.Views.FilesTreeView
 {
-    public partial class FilesTreeView : UserControl
+    public partial class FilesTreeView : DockContent
     {
         private List<Log.Log> _logs = new List<Log.Log>();
 
@@ -22,6 +23,7 @@ namespace Soti.LogReader.Viewer.Views.FilesTreeView
 
         private void InitView()
         {
+            Text = "Log List";
             var logs = new ConfigurationProvider().Get();
             foreach (var log in logs)
             {
@@ -41,7 +43,6 @@ namespace Soti.LogReader.Viewer.Views.FilesTreeView
             colTitle.AspectGetter = o => ((ITreeViewItem) o).Title;
             treeListFiles.ChildrenGetter = o => ((ITreeViewItem) o).GetChildren();
             treeListFiles.CanExpandGetter = o => ((ITreeViewItem) o).IsExpandable;
-
             
             treeListFiles.HyperlinkStyle.Visited.ForeColor = treeListFiles.HyperlinkStyle.Normal.ForeColor;
 
@@ -106,6 +107,11 @@ namespace Soti.LogReader.Viewer.Views.FilesTreeView
         private void treeListFiles_IsHyperlink(object sender, BrightIdeasSoftware.IsHyperlinkEventArgs e)
         {
             e.IsHyperlink = e.Model is FileViewModel;
+        }
+
+        private void FilesTreeView_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

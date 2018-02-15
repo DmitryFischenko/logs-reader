@@ -68,6 +68,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
+            this.KeyPreview = true;
             this.Name = "frmMain";
             this.Text = "SOTI Log Reader";
             this.ResumeLayout(false);

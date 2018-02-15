@@ -28,6 +28,7 @@ namespace Soti.LogReader.Common
             }
 
             entires.Add(Parse(string.Join(Environment.NewLine, buffer), entryParsers));
+            entires.Reverse();
 
             return entires;
         }

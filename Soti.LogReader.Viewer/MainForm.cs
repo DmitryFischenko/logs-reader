@@ -8,6 +8,8 @@ namespace Soti.LogReader.Viewer
 {
     public partial class frmMain : Form
     {
+        ViewManager _manager = new ViewManager();
+
         public frmMain()
         {
             InitializeComponent();
@@ -19,16 +21,18 @@ namespace Soti.LogReader.Viewer
 
         private void Init()
         {
+            EventBus.Bus.GetEvent<AddView>()
+                .Subscribe((view) => view.Show(dockPanel, DockState.Document));
 
+            EventBus.Bus.GetEvent<ActivateView>()
+                .Subscribe((view) => view.Activate());
         }
 
         private void ConfigureView()
         {
-            var fileTreePanel = new DockContent() { Text = "Log Files" };
-            fileTreePanel.Controls.Add(new FilesTreeView()
-            {
-                Dock = DockStyle.Fill
-            });
+            dockPanel.DockLeftPortion = 200;
+
+            var fileTreePanel = new FilesTreeView();
             fileTreePanel.Show(dockPanel, DockState.DockLeft);
         }
     }
