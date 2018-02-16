@@ -28,6 +28,7 @@ namespace Soti.LogReader.Viewer.Views
             else
             {
                 var view = new FileTableView.FileTableView(logFile);
+                view.FormClosed += (o, e) => _map.Remove(logFile);
                 _map.Add(logFile, view);
                 EventBus.Bus.GetEvent<AddView>().Publish(view);
             }

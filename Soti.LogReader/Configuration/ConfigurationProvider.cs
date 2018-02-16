@@ -27,7 +27,7 @@ namespace Soti.LogReader.Configuration
                 {
                     Type = ComponentType.McInstall,
                     Title = "McInstall",
-                    Paths = new[]{ @"{tmp}"},
+                    Paths = new[]{ @"C:\Dev\logs-reader\data"},
                     FileMasks = new [] {@"McInstall.log"},
                     Group = "Installer"
                 }

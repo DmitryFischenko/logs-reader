@@ -35,9 +35,10 @@ namespace Soti.LogReader.Viewer.Views.FilesTreeView
                 });
                 l.Type = log.Type;
                 l.Title = log.Title;
-                l.Group = log.Group;
+                l.Group = log.Group; 
                 l.LocateFiles();
-                _logs.Add(l);
+                if (l.Files.Any())
+                    _logs.Add(l);
             }
 
             colTitle.AspectGetter = o => ((ITreeViewItem) o).Title;

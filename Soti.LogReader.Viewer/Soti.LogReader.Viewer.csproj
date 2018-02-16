@@ -137,6 +137,14 @@
       <Name>Soti.LogReader</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\icons8-clear-filters-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-reading-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-reset-26.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
