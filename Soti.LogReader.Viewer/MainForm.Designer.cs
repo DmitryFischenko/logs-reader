@@ -52,6 +52,7 @@
             // 
             // dockPanel
             // 
+            this.dockPanel.AllowDrop = true;
             this.dockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dockPanel.Location = new System.Drawing.Point(0, 25);
             this.dockPanel.Name = "dockPanel";

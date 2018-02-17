@@ -71,12 +71,14 @@
             // treeListFiles
             // 
             this.treeListFiles.AllColumns.Add(this.colTitle);
+            this.treeListFiles.AllowDrop = true;
             this.treeListFiles.CellEditUseWholeCell = false;
             this.treeListFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colTitle});
             this.treeListFiles.Cursor = System.Windows.Forms.Cursors.Default;
             this.treeListFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeListFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.treeListFiles.IsSimpleDropSink = true;
             this.treeListFiles.Location = new System.Drawing.Point(0, 25);
             this.treeListFiles.Name = "treeListFiles";
             this.treeListFiles.ShowGroups = false;
@@ -86,8 +88,12 @@
             this.treeListFiles.UseHyperlinks = true;
             this.treeListFiles.View = System.Windows.Forms.View.Details;
             this.treeListFiles.VirtualMode = true;
+            this.treeListFiles.CanDrop += new System.EventHandler<BrightIdeasSoftware.OlvDropEventArgs>(this.treeListFiles_CanDrop);
             this.treeListFiles.CellClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.treeListFiles_CellClick);
+            this.treeListFiles.Dropped += new System.EventHandler<BrightIdeasSoftware.OlvDropEventArgs>(this.treeListFiles_Dropped);
             this.treeListFiles.IsHyperlink += new System.EventHandler<BrightIdeasSoftware.IsHyperlinkEventArgs>(this.treeListFiles_IsHyperlink);
+            this.treeListFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeListFiles_DragDrop);
+            this.treeListFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeListFiles_DragEnter);
             // 
             // colTitle
             // 
@@ -103,6 +109,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "FilesTreeView";
             this.Load += new System.EventHandler(this.FilesTreeView_Load);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FilesTreeView_DragEnter);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeListFiles)).EndInit();

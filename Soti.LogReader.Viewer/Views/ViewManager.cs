@@ -17,8 +17,10 @@ namespace Soti.LogReader.Viewer.Views
             EventBus.Bus.GetEvent<LogFileDoubleClick>().Subscribe(AddDocument);
 
             EventBus.Bus.GetEvent<ViewRemoved>().Subscribe(
-                (view) => _map.Remove(_map.First(m => m.Value == view).Key)
-            );
+                (view) =>
+                {
+                    _map.Remove(_map.First(m => m.Value == view).Key);
+                });
         }
 
         private void AddDocument(LogFile logFile)
@@ -28,7 +30,10 @@ namespace Soti.LogReader.Viewer.Views
             else
             {
                 var view = new FileTableView.FileTableView(logFile);
-                view.FormClosed += (o, e) => _map.Remove(logFile);
+                view.FormClosed += (o, e) =>
+                {
+                    _map.Remove(logFile);
+                };
                 _map.Add(logFile, view);
                 EventBus.Bus.GetEvent<AddView>().Publish(view);
             }

@@ -39,7 +39,7 @@ namespace Soti.LogReader.Runner
             foreach (var fileInfo in files)
             {
                 var lines = logFileReader.Read(fileInfo).Result;
-                var entries = logFileProcesser.Process(lines.ToArray(), logConfig.StartCheckers.ToArray(), logConfig.EntryParsers.ToArray()).Cast<DbInstallLogEntry>().ToArray();
+                var entries = logFileProcesser.Process(fileInfo.FullName, lines.ToArray(), logConfig.StartCheckers.ToArray(), logConfig.EntryParsers.ToArray()).Cast<DbInstallLogEntry>().ToArray();
 
                 var iterator = new EntryIterator<LogEntry>();
                 iterator.SetList(entries);

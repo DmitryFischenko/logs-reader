@@ -44,9 +44,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\IFilter.cs" />
+    <Compile Include="Common\ParsersFactory.cs" />
+    <Compile Include="Components\CloudLink\ClaEntryParser.cs" />
+    <Compile Include="Components\CloudLink\ClaEntryStartChecker.cs" />
     <Compile Include="Components\DbInstall\Filters\DacPackOnlyFilter.cs" />
+    <Compile Include="Components\DS\DsEntryParser.cs" />
+    <Compile Include="Components\DS\DsEntryStartChecker.cs" />
     <Compile Include="Components\McInstall\McInstallEntryParser.cs" />
     <Compile Include="Components\McInstall\McInstallEntryStartChecker.cs" />
+    <Compile Include="Components\MS\MsEntryParser.cs" />
+    <Compile Include="Components\MS\MsEntryStartChecker.cs" />
     <Compile Include="Configuration\Configuration.cs" />
     <Compile Include="Configuration\ConfigurationProvider.cs" />
     <Compile Include="Configuration\FileLocateConfig.cs" />

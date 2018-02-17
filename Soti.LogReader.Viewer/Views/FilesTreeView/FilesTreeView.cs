@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using BrightIdeasSoftware;
 using Soti.LogReader.Configuration;
+using Soti.LogReader.Log;
+using Soti.LogReader.Model;
 using Soti.LogReader.Viewer.Views.FilesTreeView.Model;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -24,7 +28,7 @@ namespace Soti.LogReader.Viewer.Views.FilesTreeView
         private void InitView()
         {
             Text = "Log List";
-            var logs = new ConfigurationProvider().Get();
+            var logs = ConfigurationProvider.Get();
             foreach (var log in logs)
             {
                 var l = new Log.Log();
@@ -95,6 +99,32 @@ namespace Soti.LogReader.Viewer.Views.FilesTreeView
             var dlg = new OpenFileDialog();
             if (dlg.ShowDialog() != DialogResult.OK)
                 return;
+
+            var logs = new List<Log.Log>();
+
+            foreach (var dlgFileName in dlg.FileNames)
+            {
+                var component = ConfigurationProvider.GetTypeByFileName(dlgFileName);
+                if (component == ComponentType.NotDefined)
+                    continue;
+                var l = new Log.Log()
+                {
+                   Type = component,
+                   Title = "adfadf"
+                    
+                };
+                l.Files = new LogFile[] { new LogFile()
+                    {
+                        Type = component,
+                        FileInfo = new FileInfo(dlgFileName)
+                    } 
+                } ;
+
+                logs.Add(l);
+            }
+
+            var group = new GroupViewModel("Added files", logs, ViewMode.TreeView);
+            treeListFiles.AddObject(group);
         }
 
         private void treeListFiles_CellClick(object sender, BrightIdeasSoftware.CellClickEventArgs e)
@@ -111,6 +141,31 @@ namespace Soti.LogReader.Viewer.Views.FilesTreeView
         }
 
         private void FilesTreeView_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void treeListFiles_CanDrop(object sender, OlvDropEventArgs e)
+        {
+
+        }
+
+        private void treeListFiles_Dropped(object sender, OlvDropEventArgs e)
+        {
+
+        }
+
+        private void treeListFiles_DragDrop(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void treeListFiles_DragEnter(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void FilesTreeView_DragEnter(object sender, DragEventArgs e)
         {
 
         }

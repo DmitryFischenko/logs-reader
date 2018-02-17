@@ -32,8 +32,13 @@ namespace Soti.LogReader.Viewer
         {
             dockPanel.DockLeftPortion = 200;
 
+            dockPanel.DockRightPortion = 400;
+
             var fileTreePanel = new FilesTreeView();
             fileTreePanel.Show(dockPanel, DockState.DockLeft);
+
+            var entryView = new EntryTextView();
+            entryView.Show(dockPanel, DockState.DockRight);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Soti.LogReader.Locators;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Soti.LogReader.Entries;
 

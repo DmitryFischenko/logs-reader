@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Soti.LogReader.Entries
+﻿namespace Soti.LogReader.Entries
 {
     public enum Level
     {
@@ -12,6 +6,10 @@ namespace Soti.LogReader.Entries
         Error,
         Warning,
         DacPac,
-        Event
+        Event,
+        Info,
+        Debug,
+        Warn,
+        Fatal
     }
 }

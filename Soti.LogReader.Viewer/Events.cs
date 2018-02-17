@@ -14,4 +14,8 @@ namespace Soti.LogReader.Viewer
     class LogEntrySelected : PubSubEvent<LogEntry> { };
 
     class AddFile : PubSubEvent<string> { };
+
+    class FilterByText : PubSubEvent<string>
+    {
+    };
 }

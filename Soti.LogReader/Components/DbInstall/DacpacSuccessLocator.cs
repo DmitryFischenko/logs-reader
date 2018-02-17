@@ -14,8 +14,7 @@ namespace Soti.LogReader.Components.DbInstall
             if (entry == null)
                 throw new ArgumentNullException(nameof(entry));
 
-            var dbInstallLogEntry = entry as DbInstallLogEntry;
-            if (dbInstallLogEntry == null)
+            if (!(entry is DbInstallLogEntry dbInstallLogEntry))
                 throw new InvalidOperationException("Entry of wrong type provided");
 
 

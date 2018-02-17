@@ -16,5 +16,8 @@ namespace Soti.LogReader.Entries
         public string Message { get; set; }
 
         public Dictionary<string, string> ExtraInfo => new Dictionary<string, string>();
+        public string Component { get; set; }
+        public string CorrelationId { get; set; }
+        public int Thread { get; set; }
     }
 }

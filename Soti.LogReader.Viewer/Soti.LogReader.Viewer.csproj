@@ -76,6 +76,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\EntryTextView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EntryTextView.Designer.cs">
+      <DependentUpon>EntryTextView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FilesTreeView\FilesTreeView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EntryTextView.resx">
+      <DependentUpon>EntryTextView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FilesTreeView\FilesTreeView.resx">
       <DependentUpon>FilesTreeView.cs</DependentUpon>
@@ -145,6 +154,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-reset-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-arrow-pointing-down-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-up-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-long-arrow-up-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-conversion-26.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

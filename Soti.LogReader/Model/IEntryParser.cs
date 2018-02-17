@@ -2,7 +2,7 @@
 
 namespace Soti.LogReader.Model
 {
-    public interface IEntryParser<T> where T : LogEntry
+    public interface IEntryParser<out T> where T : LogEntry
     {
         T Parse(string entry);
     }
