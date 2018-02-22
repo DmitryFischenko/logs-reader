@@ -6,6 +6,6 @@ namespace Soti.LogReader.Common
 {
     public interface ILogFileProcessor
     {
-        IEnumerable<T> Process<T>(string fileName, string[] lines, IEntryStartChecker[] startCheckers, IEntryParser<T>[] entryParsers) where T : LogEntry;
+        IEnumerable<T> Process<T>(string fileName, IEntryStartChecker[] startCheckers, IEntryParser<T>[] entryParsers) where T : LogEntry;
     }
 }

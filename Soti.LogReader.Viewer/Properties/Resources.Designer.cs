@@ -159,5 +159,15 @@ namespace Soti.LogReader.Viewer.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap notepad2_icon_31650 {
+            get {
+                object obj = ResourceManager.GetObject("notepad2_icon_31650", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

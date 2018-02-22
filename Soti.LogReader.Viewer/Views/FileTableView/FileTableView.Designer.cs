@@ -34,8 +34,16 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.refreshBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.prevErrorBtn = new System.Windows.Forms.ToolStripButton();
             this.nextErrorBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.filtersCb = new System.Windows.Forms.ToolStripComboBox();
+            this.prevLocBtn = new System.Windows.Forms.ToolStripButton();
+            this.nextLocBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.openInNotepadPlusBtn = new System.Windows.Forms.ToolStripButton();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.entriesNumberTxt = new System.Windows.Forms.ToolStripStatusLabel();
             this.fastObjectListView = new BrightIdeasSoftware.FastObjectListView();
@@ -45,12 +53,6 @@
             this.colCorId = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.colThread = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.colMessage = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.locatorsCb = new System.Windows.Forms.ToolStripComboBox();
-            this.prevLocBtn = new System.Windows.Forms.ToolStripButton();
-            this.nextLocBtn = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView)).BeginInit();
@@ -69,9 +71,11 @@
             this.nextErrorBtn,
             this.toolStripSeparator3,
             this.toolStripLabel1,
-            this.locatorsCb,
+            this.filtersCb,
             this.prevLocBtn,
-            this.nextLocBtn});
+            this.nextLocBtn,
+            this.toolStripSeparator4,
+            this.openInNotepadPlusBtn});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(871, 25);
@@ -114,6 +118,12 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(40, 22);
+            this.toolStripLabel2.Text = "Errors:";
+            // 
             // prevErrorBtn
             // 
             this.prevErrorBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -133,6 +143,56 @@
             this.nextErrorBtn.Size = new System.Drawing.Size(23, 22);
             this.nextErrorBtn.Text = "Next Error";
             this.nextErrorBtn.Click += new System.EventHandler(this.nextErrorBtn_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(55, 22);
+            this.toolStripLabel1.Text = "Locators:";
+            // 
+            // filtersCb
+            // 
+            this.filtersCb.Name = "filtersCb";
+            this.filtersCb.Size = new System.Drawing.Size(121, 25);
+            this.filtersCb.SelectedIndexChanged += new System.EventHandler(this.filtersCb_SelectedIndexChanged);
+            // 
+            // prevLocBtn
+            // 
+            this.prevLocBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.prevLocBtn.Image = global::Soti.LogReader.Viewer.Properties.Resources.icons8_long_arrow_up_26;
+            this.prevLocBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.prevLocBtn.Name = "prevLocBtn";
+            this.prevLocBtn.Size = new System.Drawing.Size(23, 22);
+            this.prevLocBtn.Text = "toolStripButton1";
+            // 
+            // nextLocBtn
+            // 
+            this.nextLocBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.nextLocBtn.Image = global::Soti.LogReader.Viewer.Properties.Resources.icons8_arrow_pointing_down_26;
+            this.nextLocBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.nextLocBtn.Name = "nextLocBtn";
+            this.nextLocBtn.Size = new System.Drawing.Size(23, 22);
+            this.nextLocBtn.Text = "toolStripButton2";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // openInNotepadPlusBtn
+            // 
+            this.openInNotepadPlusBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.openInNotepadPlusBtn.Image = global::Soti.LogReader.Viewer.Properties.Resources.notepad2_icon_31650;
+            this.openInNotepadPlusBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.openInNotepadPlusBtn.Name = "openInNotepadPlusBtn";
+            this.openInNotepadPlusBtn.Size = new System.Drawing.Size(23, 22);
+            this.openInNotepadPlusBtn.Text = "toolStripButton1";
+            this.openInNotepadPlusBtn.Click += new System.EventHandler(this.openInNotepadPlusBtn_Click);
             // 
             // statusStrip
             // 
@@ -222,46 +282,6 @@
             this.colMessage.Sortable = false;
             this.colMessage.Text = "Message";
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(55, 22);
-            this.toolStripLabel1.Text = "Locators:";
-            // 
-            // locatorsCb
-            // 
-            this.locatorsCb.Name = "locatorsCb";
-            this.locatorsCb.Size = new System.Drawing.Size(121, 25);
-            // 
-            // prevLocBtn
-            // 
-            this.prevLocBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.prevLocBtn.Image = global::Soti.LogReader.Viewer.Properties.Resources.icons8_long_arrow_up_26;
-            this.prevLocBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.prevLocBtn.Name = "prevLocBtn";
-            this.prevLocBtn.Size = new System.Drawing.Size(23, 22);
-            this.prevLocBtn.Text = "toolStripButton1";
-            // 
-            // nextLocBtn
-            // 
-            this.nextLocBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.nextLocBtn.Image = global::Soti.LogReader.Viewer.Properties.Resources.icons8_arrow_pointing_down_26;
-            this.nextLocBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.nextLocBtn.Name = "nextLocBtn";
-            this.nextLocBtn.Size = new System.Drawing.Size(23, 22);
-            this.nextLocBtn.Text = "toolStripButton2";
-            // 
-            // toolStripLabel2
-            // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(40, 22);
-            this.toolStripLabel2.Text = "Errors:";
-            // 
             // FileTableView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -305,8 +325,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
-        private System.Windows.Forms.ToolStripComboBox locatorsCb;
+        private System.Windows.Forms.ToolStripComboBox filtersCb;
         private System.Windows.Forms.ToolStripButton prevLocBtn;
         private System.Windows.Forms.ToolStripButton nextLocBtn;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton openInNotepadPlusBtn;
     }
 }

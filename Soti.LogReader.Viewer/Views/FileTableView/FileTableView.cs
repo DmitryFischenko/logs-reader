@@ -1,9 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BrightIdeasSoftware;
@@ -12,19 +10,35 @@ using Soti.LogReader.Entries;
 using Soti.LogReader.Log;
 using WeifenLuo.WinFormsUI.Docking;
 using System.Threading;
+using Prism.Events;
 using Soti.LogReader.Components.DbInstall;
 using Soti.LogReader.Locators;
+using Soti.LogReader.Model;
 
 namespace Soti.LogReader.Viewer.Views.FileTableView
 {
+
+
+
     public partial class FileTableView : DockContent
     {
         private readonly LogFile _logFile;
         private readonly CancellationTokenSource _cancellationToken = new CancellationTokenSource();
+        private readonly SubscriptionToken FilterByTextSubscription;
 
         public FileTableView(LogFile logFile)
         {
             InitializeComponent();
+
+            if (logFile.Type == ComponentType.DS)
+            {
+                filtersCb.Items.Add(new CustomFilter()
+                {
+                    Title = "Comm",
+                    Predicate = o => o.Message.StartsWith("CCommAddr::")
+                });
+            }
+
             FormClosing += (o, e) =>
             {
                 _cancellationToken.Cancel();
@@ -36,11 +50,12 @@ namespace Soti.LogReader.Viewer.Views.FileTableView
 
             FormClosed += (o, e) =>
             {
+                EventBus.Bus.GetEvent<FilterByText>().Unsubscribe(FilterByTextSubscription);
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
             };
 
-            EventBus.Bus.GetEvent<FilterByText>().Subscribe((filter) =>
+            FilterByTextSubscription = EventBus.Bus.GetEvent<FilterByText>().Subscribe((filter) =>
             {
                 filterTextBox.Text = filter;
                 Filter();
@@ -85,8 +100,6 @@ namespace Soti.LogReader.Viewer.Views.FileTableView
                 var iterator = new EntryIterator<LogEntry>();
                 iterator.SetList(fastObjectListView.Objects.Cast<LogEntry>().ToArray());
                 var l = new DbInstallStartLocator();
-                
-
             });
         }
 
@@ -104,11 +117,9 @@ namespace Soti.LogReader.Viewer.Views.FileTableView
 
             await Task.Run(() =>
             {
-                //var lines = new LogFileReader().Read(_logFile.FileInfo).Result;
                 entries = new LogFileProcessor()
                     .Process(
                         _logFile.FileInfo.FullName,
-                        null,
                         ParsersFactory.GetEntryStartCheckers(_logFile.Type),
                         ParsersFactory.GetEntryParsers(_logFile.Type)).ToArray();
             });
@@ -126,6 +137,7 @@ namespace Soti.LogReader.Viewer.Views.FileTableView
         {
             if (isLoading)
             {
+                fastObjectListView.SuspendLayout();
                 fastObjectListView.OverlayText.Text = "Loading...";
                 fastObjectListView.RefreshOverlays();
                 fastObjectListView.Update();
@@ -137,6 +149,7 @@ namespace Soti.LogReader.Viewer.Views.FileTableView
                 fastObjectListView.RefreshOverlays();
                 fastObjectListView.Update();
                 Text = _logFile.FileInfo.Name;
+                fastObjectListView.ResumeLayout();
             }
         }
 
@@ -148,8 +161,20 @@ namespace Soti.LogReader.Viewer.Views.FileTableView
 
         private void Filter()
         {
-
-            fastObjectListView.ModelFilter = TextMatchFilter.Contains(fastObjectListView, filterTextBox.Text);
+            if (DateTime.TryParse(filterTextBox.Text, out var date))
+            {
+                var entry = fastObjectListView.Objects.Cast<LogEntry>().FirstOrDefault(e => e.TimeCreated <= date);
+                if (entry != null)
+                {
+                    fastObjectListView.SelectedObject = entry;
+                    fastObjectListView.EnsureModelVisible(entry);
+                }
+            }
+            else
+            {
+                fastObjectListView.ModelFilter = TextMatchFilter.Contains(fastObjectListView, filterTextBox.Text);
+                //fastObjectListView.ModelFilter = new ModelFilter( o => ((LogEntry)o).Message.StartsWith("Comm"));
+            }
         }
 
         private void FileTableView_KeyDown(object sender, KeyEventArgs e)
@@ -158,11 +183,17 @@ namespace Soti.LogReader.Viewer.Views.FileTableView
             {
                 filterTextBox.Focus();
             }
+
+            if (e.KeyCode == Keys.F5)
+            {
+                LoadContent();
+            }
         }
 
         private void clearFilterBtn_Click(object sender, EventArgs e)
         {
             filterTextBox.Text = null;
+            filtersCb.SelectedItem = null;
             var selected = fastObjectListView.SelectedObject;
             fastObjectListView.ModelFilter = null;
             if (selected != null)
@@ -237,6 +268,36 @@ namespace Soti.LogReader.Viewer.Views.FileTableView
                 if (!string.IsNullOrEmpty(model.CorrelationId))
                     fastObjectListView.ModelFilter = new ModelFilter((entry) => ((LogEntry)entry).CorrelationId == model.CorrelationId);
             }
+        }
+
+        private void openInNotepadPlusBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("Notepad++", _logFile.FileInfo.FullName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error running Notepad++ : " + ex.Message);
+            }
+        }
+
+        private void filtersCb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (filtersCb.SelectedItem is CustomFilter filter && filter.Predicate != null)
+                fastObjectListView.ModelFilter = new ModelFilter(o => filter.Predicate((LogEntry)o));
+        }
+    }
+
+    public class CustomFilter
+    {
+        public string Title { get; set; }
+
+        public Predicate<LogEntry> Predicate { get; set; }
+
+        public override string ToString()
+        {
+            return Title;
         }
     }
 }

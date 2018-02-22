@@ -32,14 +32,12 @@ namespace Soti.LogReader.Runner
 
             var files = locator.Locate(logConfig.FileLocateConfig).ToArray();
             files.OrderByDescending(fi => fi.LastWriteTime).ToList().ForEach(f => Console.WriteLine(@"Name: {0}. Created: {1}", f.Name, f.LastWriteTime));
-            var logFileReader = new LogFileReader();
             var logFileProcesser = new LogFileProcessor();         
           
 
             foreach (var fileInfo in files)
             {
-                var lines = logFileReader.Read(fileInfo).Result;
-                var entries = logFileProcesser.Process(fileInfo.FullName, lines.ToArray(), logConfig.StartCheckers.ToArray(), logConfig.EntryParsers.ToArray()).Cast<DbInstallLogEntry>().ToArray();
+                var entries = logFileProcesser.Process(fileInfo.FullName, logConfig.StartCheckers.ToArray(), logConfig.EntryParsers.ToArray()).Cast<DbInstallLogEntry>().ToArray();
 
                 var iterator = new EntryIterator<LogEntry>();
                 iterator.SetList(entries);
@@ -56,7 +54,6 @@ namespace Soti.LogReader.Runner
                 entries.Where(e => e.DacpackStatus == "SUCCESS").ToList().ForEach(e => Console.WriteLine(e.Message));
             }
 
-            var l = logFileReader.Read(files.First()).Result;
             var fileWatcher = new FileSystemWatcher();
             fileWatcher.Path = Path.GetDirectoryName(files.First().FullName);
             fileWatcher.Filter = files.First().Name;
@@ -64,8 +61,7 @@ namespace Soti.LogReader.Runner
             fileWatcher.EnableRaisingEvents = true;
             fileWatcher.Changed += (source, e) =>
             {
-                var newLines = logFileReader.Read().Result;
-                Console.WriteLine("{0} lines added to the file.", newLines.Count());
+                //Console.WriteLine("{0} lines added to the file.", newLines.Count());
             };
 
 

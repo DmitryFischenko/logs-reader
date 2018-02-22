@@ -54,18 +54,25 @@ namespace Soti.LogReader.Components.MS
             var levelEnd = entry.IndexOf(' ', levelStart);
             log.Level = (Level)Enum.Parse(typeof(Level), entry.Substring(levelStart, levelEnd - levelStart), true);
 
-            var componentStart = entry.IndexOf('[', levelEnd) + 1;
-            var componentEnd = entry.IndexOf(']', componentStart);
-            log.Component = entry.Substring(componentStart, componentEnd - componentStart);
 
-            if (entry[componentEnd + 2] == '[')
+
+            var componentEnd = -1;
+
+            if (entry[levelEnd + 2] == '[')
+            {
+                var componentStart = entry.IndexOf('[', levelEnd) + 1;
+                componentEnd = entry.IndexOf(']', componentStart);
+                log.Component = entry.Substring(componentStart, componentEnd - componentStart);
+            }
+
+            if (componentEnd != -1 && entry[componentEnd + 2] == '[')
             {
                 var refStart = componentEnd + 3;
                 var refEnd = entry.IndexOf(']', refStart);
                 log.CorrelationId = entry.Substring(refStart, refEnd - refStart);
             }
 
-            var threadStart = entry.IndexOf('(', componentEnd) + 1;
+            var threadStart = entry.IndexOf('(', levelEnd) + 1;
             var threadEnd = entry.IndexOf(')', threadStart);
             var threadStr = entry.Substring(threadStart, threadEnd - threadStart);
 

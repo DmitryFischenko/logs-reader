@@ -7,4 +7,6 @@ Parses/Viewers for complex messages like saml request/response,  windows mdm mes
 popups with exceptions
 
 
-open in Notepad++ option
++open in Notepad++ option
+
++Refresh by F5

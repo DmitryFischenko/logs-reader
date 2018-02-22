@@ -17,7 +17,12 @@ namespace Soti.LogReader.Viewer.Views.FilesTreeView
     {
         private List<Log.Log> _logs = new List<Log.Log>();
 
-        private ViewMode _mode = ViewMode.LastFiles;            
+        private ViewMode _mode = ViewMode.LastFiles;
+
+        private readonly List<Log.Log> _addedFiles = new List<Log.Log>();
+
+        private GroupViewModel _addedFilesGroup;
+
 
         public FilesTreeView()
         {
@@ -48,6 +53,7 @@ namespace Soti.LogReader.Viewer.Views.FilesTreeView
             colTitle.AspectGetter = o => ((ITreeViewItem) o).Title;
             treeListFiles.ChildrenGetter = o => ((ITreeViewItem) o).GetChildren();
             treeListFiles.CanExpandGetter = o => ((ITreeViewItem) o).IsExpandable;
+            treeListFiles.CellToolTipGetter = (o, e) => ((ITreeViewItem)e).Tooltip;
             
             treeListFiles.HyperlinkStyle.Visited.ForeColor = treeListFiles.HyperlinkStyle.Normal.ForeColor;
 
@@ -70,7 +76,8 @@ namespace Soti.LogReader.Viewer.Views.FilesTreeView
                 else
                     viewItems.Add(new GroupViewModel(group.Key, group, _mode));
             }
-
+            if (_addedFilesGroup != null)
+                viewItems.Add(_addedFilesGroup);
             treeListFiles.SetObjects(viewItems);
             treeListFiles.AutoResizeColumns();
             treeListFiles.ExpandAll();
@@ -96,35 +103,46 @@ namespace Soti.LogReader.Viewer.Views.FilesTreeView
 
         private void btnAddFile_Click(object sender, EventArgs e)
         {
-            var dlg = new OpenFileDialog();
+            var dlg = new OpenFileDialog()
+            {
+                Multiselect = true
+            };
             if (dlg.ShowDialog() != DialogResult.OK)
                 return;
 
-            var logs = new List<Log.Log>();
 
             foreach (var dlgFileName in dlg.FileNames)
             {
                 var component = ConfigurationProvider.GetTypeByFileName(dlgFileName);
                 if (component == ComponentType.NotDefined)
                     continue;
-                var l = new Log.Log()
+
+                var log = _addedFiles.FirstOrDefault(l => l.Type == component);
+                if (log == null)
                 {
-                   Type = component,
-                   Title = "adfadf"
-                    
-                };
-                l.Files = new LogFile[] { new LogFile()
+                    log = new Log.Log()
                     {
                         Type = component,
-                        FileInfo = new FileInfo(dlgFileName)
-                    } 
-                } ;
+                        Title = component.ToString()
+                    };
+                    _addedFiles.Add(log);
+                }
 
-                logs.Add(l);
+                var files = log.Files?.ToList() ?? new List<LogFile>();
+                files.Add(new LogFile()
+                {
+                    Type = component,
+                    FileInfo = new FileInfo(dlgFileName)
+                });
+
+                log.Files = files;
             }
 
-            var group = new GroupViewModel("Added files", logs, ViewMode.TreeView);
-            treeListFiles.AddObject(group);
+            if (_addedFilesGroup != null)
+                treeListFiles.RemoveObject(_addedFilesGroup);
+
+            _addedFilesGroup = new GroupViewModel("Added files", _addedFiles, ViewMode.TreeView);
+            treeListFiles.AddObject(_addedFilesGroup);
         }
 
         private void treeListFiles_CellClick(object sender, BrightIdeasSoftware.CellClickEventArgs e)

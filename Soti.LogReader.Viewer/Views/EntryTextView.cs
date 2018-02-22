@@ -1,6 +1,8 @@
-﻿using System.Diagnostics;
-using System.Windows;
+﻿using System;
+using System.Diagnostics;
+using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
+using Clipboard = System.Windows.Clipboard;
 
 namespace Soti.LogReader.Viewer.Views
 {
@@ -20,10 +22,17 @@ namespace Soti.LogReader.Viewer.Views
             set => base.Text = value;
         }
 
-        private void toolStripButton1_Click(object sender, System.EventArgs e)
+        private void toolStripButton1_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(richTextBox1.Text);
-            Process.Start("Notepad++","-nosession");
+            try
+            {
+                Process.Start("Notepad++", "-nosession");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error running Notepad++ : " + ex.Message);
+            }
         }
 
         private void richTextBox1_SelectionChanged(object sender, System.EventArgs e)
@@ -36,7 +45,6 @@ namespace Soti.LogReader.Viewer.Views
             {
                 filterBySelectedBtn.Enabled = true;
             }
-
         }
 
         private void filterBySelectedBtn_Click(object sender, System.EventArgs e)
@@ -45,6 +53,10 @@ namespace Soti.LogReader.Viewer.Views
                 return;
 
             EventBus.Bus.GetEvent<FilterByText>().Publish(richTextBox1.SelectedText);
+        }
+
+        private void EntryTextView_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
         }
     }
 }

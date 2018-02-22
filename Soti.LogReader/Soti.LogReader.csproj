@@ -73,7 +73,6 @@
     <Compile Include="Locators\IEntryCollector.cs" />
     <Compile Include="Locators\IEntryIterator.cs" />
     <Compile Include="Common\LogFileProcessor.cs" />
-    <Compile Include="Common\LogFileReader.cs" />
     <Compile Include="Log\Log.cs" />
     <Compile Include="Components\DbInstall\DacPacDeployStatusParser.cs" />
     <Compile Include="Components\DbInstall\DbInstallEntryParser.cs" />

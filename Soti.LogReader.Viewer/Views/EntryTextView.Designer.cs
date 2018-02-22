@@ -86,6 +86,7 @@
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "EntryTextView";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EntryTextView_KeyDown);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);

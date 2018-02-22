@@ -20,5 +20,7 @@ namespace Soti.LogReader.Viewer.Views.FilesTreeView.Model
         {
             return _children;
         }
+
+        public string Tooltip => string.Empty;
     }
 }

@@ -11,5 +11,7 @@ namespace Soti.LogReader.Viewer.Views.FilesTreeView.Model
         string Title { get;  }
         bool IsExpandable { get;  }
         IEnumerable<object> GetChildren();
+
+        string Tooltip { get; }
     }
 }

@@ -167,5 +167,8 @@
   <ItemGroup>
     <None Include="Resources\icons8-conversion-26.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notepad2-icon-31650.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
