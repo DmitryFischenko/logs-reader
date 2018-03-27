@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using Soti.LogReader.Entries;
 using WeifenLuo.WinFormsUI.Docking;
 using Clipboard = System.Windows.Clipboard;
 
@@ -8,12 +11,36 @@ namespace Soti.LogReader.Viewer.Views
 {
     public partial class EntryTextView : DockContent
     {
+        private LogEntry _currentEntry;
+        List<LogFormatter> _formatters = new List<LogFormatter>();
+
         public EntryTextView()
         {
             InitializeComponent();
             this.Text = "Message";
+
+            _formatters.Add(new LogFormatter()
+            {
+                MatchPredictae = o => o.Message.Contains(@"{""Snapshot"":"),
+                Formatter = msg => msg.Replace(",", Environment.NewLine)
+            });
+
+            _formatters.Add(new LogFormatter()
+            {
+                MatchPredictae = o=>o.Message.StartsWith(@"SAML2 response:") || o.Message.StartsWith(@"SAML2 request:"),
+                Formatter = msg =>
+                {
+                    var doc = XDocument.Parse(msg.Replace("SAML2 response: ", string.Empty).Replace("SAML2 request: ", string.Empty));
+                    return doc.ToString();
+                }
+            });
+
             filterBySelectedBtn.Enabled = false;
-            EventBus.Bus.GetEvent<LogEntrySelected>().Subscribe(log => richTextBox1.Text = log?.Message ?? string.Empty);
+            EventBus.Bus.GetEvent<LogEntrySelected>().Subscribe(log =>
+            {
+                _currentEntry = log;
+                richTextBox1.Text = log?.Message ?? string.Empty;
+            });
         }
 
         public sealed override string Text
@@ -57,6 +84,36 @@ namespace Soti.LogReader.Viewer.Views
 
         private void EntryTextView_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
+
         }
+
+        private void formatBtn_Click(object sender, EventArgs e)
+        {
+            foreach (var logFormatter in _formatters)
+            {
+                if (logFormatter.MatchPredictae(_currentEntry))
+                    richTextBox1.Text = logFormatter.Formatter(_currentEntry.Message);
+            }
+        }
+
+        private void removeFormatBtn_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = _currentEntry.Message;
+        }
+
+        private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.W)
+            {
+                richTextBox1.WordWrap = !richTextBox1.WordWrap;
+            }
+        }
+    }
+
+    public class LogFormatter
+    {
+        public Predicate<LogEntry> MatchPredictae { get; set; }
+
+        public Func<string, string> Formatter { get; set; }
     }
 }

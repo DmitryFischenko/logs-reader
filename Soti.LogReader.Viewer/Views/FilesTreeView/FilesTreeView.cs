@@ -110,6 +110,7 @@ namespace Soti.LogReader.Viewer.Views.FilesTreeView
             if (dlg.ShowDialog() != DialogResult.OK)
                 return;
 
+            var newFiles = new List<LogFile>();
 
             foreach (var dlgFileName in dlg.FileNames)
             {
@@ -129,11 +130,15 @@ namespace Soti.LogReader.Viewer.Views.FilesTreeView
                 }
 
                 var files = log.Files?.ToList() ?? new List<LogFile>();
-                files.Add(new LogFile()
+
+                var newFile = new LogFile()
                 {
                     Type = component,
                     FileInfo = new FileInfo(dlgFileName)
-                });
+                };
+
+                files.Add(newFile);
+                newFiles.Add(newFile);
 
                 log.Files = files;
             }
@@ -143,6 +148,9 @@ namespace Soti.LogReader.Viewer.Views.FilesTreeView
 
             _addedFilesGroup = new GroupViewModel("Added files", _addedFiles, ViewMode.TreeView);
             treeListFiles.AddObject(_addedFilesGroup);
+            treeListFiles.Expand(_addedFilesGroup);
+
+            newFiles.ForEach(f => EventBus.Bus.GetEvent<OpenLogFile>().Publish(f));
         }
 
         private void treeListFiles_CellClick(object sender, BrightIdeasSoftware.CellClickEventArgs e)
@@ -150,7 +158,7 @@ namespace Soti.LogReader.Viewer.Views.FilesTreeView
             if(!(e.Model is FileViewModel fileViewModel))
                 return;
 
-            EventBus.Bus.GetEvent<LogFileDoubleClick>().Publish(fileViewModel.LogFile);
+            EventBus.Bus.GetEvent<OpenLogFile>().Publish(fileViewModel.LogFile);
         }
 
         private void treeListFiles_IsHyperlink(object sender, BrightIdeasSoftware.IsHyperlinkEventArgs e)

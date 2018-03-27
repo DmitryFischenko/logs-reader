@@ -17,9 +17,6 @@ using Soti.LogReader.Model;
 
 namespace Soti.LogReader.Viewer.Views.FileTableView
 {
-
-
-
     public partial class FileTableView : DockContent
     {
         private readonly LogFile _logFile;
@@ -37,6 +34,16 @@ namespace Soti.LogReader.Viewer.Views.FileTableView
                     Title = "Comm",
                     Predicate = o => o.Message.StartsWith("CCommAddr::")
                 });
+            }
+
+            if (logFile.Type == ComponentType.MS)
+            {
+                filtersCb.Items.Add(new CustomFilter()
+                {
+                    Title = "SAML request/response",
+                    Predicate = o => o.Message.StartsWith("SAML2 response") || o.Message.StartsWith("SAML2 request")
+                });
+
             }
 
             FormClosing += (o, e) =>
@@ -137,7 +144,7 @@ namespace Soti.LogReader.Viewer.Views.FileTableView
         {
             if (isLoading)
             {
-                fastObjectListView.SuspendLayout();
+                fastObjectListView.BeginUpdate();
                 fastObjectListView.OverlayText.Text = "Loading...";
                 fastObjectListView.RefreshOverlays();
                 fastObjectListView.Update();
@@ -149,7 +156,7 @@ namespace Soti.LogReader.Viewer.Views.FileTableView
                 fastObjectListView.RefreshOverlays();
                 fastObjectListView.Update();
                 Text = _logFile.FileInfo.Name;
-                fastObjectListView.ResumeLayout();
+                fastObjectListView.EndUpdate();
             }
         }
 

@@ -14,7 +14,7 @@ namespace Soti.LogReader.Viewer.Views
         readonly Dictionary<LogFile, DockContent> _map = new Dictionary<LogFile, DockContent>();
         public ViewManager()
         {
-            EventBus.Bus.GetEvent<LogFileDoubleClick>().Subscribe(AddDocument);
+            EventBus.Bus.GetEvent<OpenLogFile>().Subscribe(AddDocument);
 
             EventBus.Bus.GetEvent<ViewRemoved>().Subscribe(
                 (view) =>

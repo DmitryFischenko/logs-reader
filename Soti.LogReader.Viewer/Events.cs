@@ -7,7 +7,7 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace Soti.LogReader.Viewer
 {
-    class LogFileDoubleClick : PubSubEvent<LogFile> { };
+    class OpenLogFile : PubSubEvent<LogFile> { };
     class ActivateView : PubSubEvent<DockContent> { };
     class AddView : PubSubEvent<DockContent> { };
     class ViewRemoved : PubSubEvent<IDockContent> { };

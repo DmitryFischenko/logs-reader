@@ -170,5 +170,11 @@
   <ItemGroup>
     <None Include="Resources\notepad2-icon-31650.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-align-left-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delete-26.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

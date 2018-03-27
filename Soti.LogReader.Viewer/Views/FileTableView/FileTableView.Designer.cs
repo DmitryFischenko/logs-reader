@@ -152,8 +152,8 @@
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(55, 22);
-            this.toolStripLabel1.Text = "Locators:";
+            this.toolStripLabel1.Size = new System.Drawing.Size(41, 22);
+            this.toolStripLabel1.Text = "Filters:";
             // 
             // filtersCb
             // 
@@ -227,6 +227,7 @@
             this.colMessage});
             this.fastObjectListView.Cursor = System.Windows.Forms.Cursors.Default;
             this.fastObjectListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastObjectListView.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fastObjectListView.FullRowSelect = true;
             this.fastObjectListView.Location = new System.Drawing.Point(0, 25);
             this.fastObjectListView.Name = "fastObjectListView";

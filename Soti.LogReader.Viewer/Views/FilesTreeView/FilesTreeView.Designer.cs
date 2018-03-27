@@ -77,6 +77,7 @@
             this.colTitle});
             this.treeListFiles.Cursor = System.Windows.Forms.Cursors.Default;
             this.treeListFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeListFiles.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeListFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.treeListFiles.IsSimpleDropSink = true;
             this.treeListFiles.Location = new System.Drawing.Point(0, 25);

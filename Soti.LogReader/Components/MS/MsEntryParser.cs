@@ -58,7 +58,7 @@ namespace Soti.LogReader.Components.MS
 
             var componentEnd = -1;
 
-            if (entry[levelEnd + 2] == '[')
+            if (entry.Substring(levelEnd + 1).TrimStart()[0] == '[')
             {
                 var componentStart = entry.IndexOf('[', levelEnd) + 1;
                 componentEnd = entry.IndexOf(']', componentStart);
