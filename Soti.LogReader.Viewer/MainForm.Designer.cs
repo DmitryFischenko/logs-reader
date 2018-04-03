@@ -32,6 +32,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.btnConfigureLogs = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -44,6 +46,8 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnConfigureLogs});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(941, 25);
@@ -59,6 +63,16 @@
             this.dockPanel.Size = new System.Drawing.Size(941, 452);
             this.dockPanel.TabIndex = 2;
             // 
+            // btnConfigureLogs
+            // 
+            this.btnConfigureLogs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnConfigureLogs.Image = ((System.Drawing.Image)(resources.GetObject("btnConfigureLogs.Image")));
+            this.btnConfigureLogs.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnConfigureLogs.Name = "btnConfigureLogs";
+            this.btnConfigureLogs.Size = new System.Drawing.Size(23, 22);
+            this.btnConfigureLogs.Text = "toolStripButton1";
+            this.btnConfigureLogs.Click += new System.EventHandler(this.btnConfigureLogs_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -72,6 +86,8 @@
             this.KeyPreview = true;
             this.Name = "frmMain";
             this.Text = "SOTI Log Reader";
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -82,6 +98,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;
+        private System.Windows.Forms.ToolStripButton btnConfigureLogs;
     }
 }
 

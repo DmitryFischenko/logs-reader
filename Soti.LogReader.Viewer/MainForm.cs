@@ -1,6 +1,7 @@
 ﻿using Soti.LogReader.Configuration;
 using Soti.LogReader.Viewer.Views;
 using System.Windows.Forms;
+using Soti.LogReader.Viewer.Modules;
 using Soti.LogReader.Viewer.Views.FilesTreeView;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -39,6 +40,11 @@ namespace Soti.LogReader.Viewer
 
             var entryView = new EntryTextView();
             entryView.Show(dockPanel, DockState.DockRight);
+        }
+
+        private void btnConfigureLogs_Click(object sender, System.EventArgs e)
+        {
+            LoggingConfigManager.TurnOffBufferedLogAppenders();
         }
     }
 }
