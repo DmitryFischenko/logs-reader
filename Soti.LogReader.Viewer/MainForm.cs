@@ -7,11 +7,11 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace Soti.LogReader.Viewer
 {
-    public partial class frmMain : Form
+    public partial class FrmMain : Form
     {
         ViewManager _manager = new ViewManager();
 
-        public frmMain()
+        public FrmMain()
         {
             InitializeComponent();
 

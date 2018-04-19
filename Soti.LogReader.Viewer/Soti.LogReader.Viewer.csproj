@@ -187,5 +187,17 @@
   <ItemGroup>
     <None Include="Resources\icons8-delete-26.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-timer-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-new-message-filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-new-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-new-message-50.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

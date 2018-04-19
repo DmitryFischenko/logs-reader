@@ -143,6 +143,36 @@ namespace Soti.LogReader.Viewer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_new_26 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-new-26", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_new_message_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-new-message-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_new_message_filled_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-new-message-filled-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_reading_26 {
             get {
                 object obj = ResourceManager.GetObject("icons8_reading_26", resourceCulture);
@@ -156,6 +186,16 @@ namespace Soti.LogReader.Viewer.Properties {
         internal static System.Drawing.Bitmap icons8_reset_26 {
             get {
                 object obj = ResourceManager.GetObject("icons8_reset_26", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_timer_26 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-timer-26", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

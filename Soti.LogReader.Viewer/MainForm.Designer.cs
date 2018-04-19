@@ -1,6 +1,6 @@
 ﻿namespace Soti.LogReader.Viewer
 {
-    partial class frmMain
+    partial class FrmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
@@ -66,14 +66,14 @@
             // btnConfigureLogs
             // 
             this.btnConfigureLogs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnConfigureLogs.Image = ((System.Drawing.Image)(resources.GetObject("btnConfigureLogs.Image")));
+            this.btnConfigureLogs.Image = global::Soti.LogReader.Viewer.Properties.Resources.icons8_timer_26;
             this.btnConfigureLogs.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnConfigureLogs.Name = "btnConfigureLogs";
             this.btnConfigureLogs.Size = new System.Drawing.Size(23, 22);
-            this.btnConfigureLogs.Text = "toolStripButton1";
+            this.btnConfigureLogs.Text = "Turn off buffered log appenders for MS and DS";
             this.btnConfigureLogs.Click += new System.EventHandler(this.btnConfigureLogs_Click);
             // 
-            // frmMain
+            // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -84,7 +84,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.KeyPreview = true;
-            this.Name = "frmMain";
+            this.Name = "FrmMain";
             this.Text = "SOTI Log Reader";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

@@ -35,6 +35,28 @@ namespace Soti.LogReader.Viewer.Views
                 }
             });
 
+            _formatters.Add(new LogFormatter()
+            {
+                MatchPredictae = o => o.Message.Contains("<plist "),
+                Formatter = msg =>
+                {
+                    var startIndex = msg.IndexOf("<plist", StringComparison.Ordinal);
+                    var lastIndex = msg.IndexOf("</plist>", StringComparison.Ordinal) + "</plist>".Length;
+                    if (startIndex < 0 || lastIndex < 0)
+                        return msg;
+
+                    var xml = msg.Substring(startIndex, lastIndex - startIndex);
+                    var formattedXml = XDocument.Parse(xml).ToString();
+                    return msg.Replace(xml, formattedXml);
+                }
+            });
+
+            _formatters.Add(new LogFormatter()
+            {
+                MatchPredictae = o => o.Message.Contains(@"DeviceInfoMsg: {""Snapshot"":"),
+                Formatter = msg => msg.Replace(",", Environment.NewLine)
+            });
+
             filterBySelectedBtn.Enabled = false;
             EventBus.Bus.GetEvent<LogEntrySelected>().Subscribe(log =>
             {

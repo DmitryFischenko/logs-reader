@@ -11,8 +11,8 @@ namespace Soti.LogReader.Viewer.Modules
 {
     public static class LoggingConfigManager
     {
-        private static string _msConfigPath;
-        private static string _dsConfigPath;
+        private static readonly string _msConfigPath;
+        private static readonly string _dsConfigPath;
 
         static LoggingConfigManager()
         {
@@ -57,9 +57,9 @@ namespace Soti.LogReader.Viewer.Modules
             var root = log4NetSection.Elements("root");
             var appenders = root.Elements("appender-ref");
             var bufferedAppender = appenders.FirstOrDefault(a => a.Attribute("ref")?.Value == "BufferingForwardingAppender");
-            if (bufferedAppender != null)
-                bufferedAppender.Attribute("ref").Value = "FileAppender";
+            if (bufferedAppender == null) return;
 
+            bufferedAppender.Attribute("ref").Value = "FileAppender";
             Update(xDoc, path);
         }
     }

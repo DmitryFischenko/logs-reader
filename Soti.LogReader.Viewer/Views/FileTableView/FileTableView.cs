@@ -22,6 +22,8 @@ namespace Soti.LogReader.Viewer.Views.FileTableView
         private readonly LogFile _logFile;
         private readonly CancellationTokenSource _cancellationToken = new CancellationTokenSource();
         private readonly SubscriptionToken FilterByTextSubscription;
+        private bool _showOnlyNewRecords;
+        private int _lastEntriesCount = 0;
 
         public FileTableView(LogFile logFile)
         {
@@ -133,6 +135,13 @@ namespace Soti.LogReader.Viewer.Views.FileTableView
 
             if (_cancellationToken.IsCancellationRequested)
                 return;
+
+            var count = entries.Length;
+
+            if (_lastEntriesCount > 0 && _showOnlyNewRecords)
+                entries = entries.Take(entries.Length - _lastEntriesCount).ToArray();
+
+            _lastEntriesCount = count;
 
             entriesNumberTxt.Text = $"Entries: {entries.Length}";
             fastObjectListView.SetObjects(entries);
@@ -293,6 +302,16 @@ namespace Soti.LogReader.Viewer.Views.FileTableView
         {
             if (filtersCb.SelectedItem is CustomFilter filter && filter.Predicate != null)
                 fastObjectListView.ModelFilter = new ModelFilter(o => filter.Predicate((LogEntry)o));
+        }
+
+        private void prevLocBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnShowOnlyNew_Click(object sender, EventArgs e)
+        {
+            _showOnlyNewRecords = btnShowOnlyNew.Checked;
         }
     }
 
