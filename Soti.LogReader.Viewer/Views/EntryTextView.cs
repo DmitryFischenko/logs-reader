@@ -63,6 +63,11 @@ namespace Soti.LogReader.Viewer.Views
                 _currentEntry = log;
                 richTextBox1.Text = log?.Message ?? string.Empty;
             });
+
+            EventBus.Bus.GetEvent<CommTracerMessageSelected>().Subscribe(msg =>
+            {
+                richTextBox1.Text = JsonHelper.FormatJson(msg.Message);
+            });
         }
 
         public sealed override string Text

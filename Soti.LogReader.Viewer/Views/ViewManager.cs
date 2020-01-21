@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -9,10 +10,20 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace Soti.LogReader.Viewer.Views
 {
-    class ViewManager
+    public class ViewManager
     {
+        private static ViewManager _instance;
+
         readonly Dictionary<LogFile, DockContent> _map = new Dictionary<LogFile, DockContent>();
-        public ViewManager()
+
+        private ViewManager()
+        {
+
+        }
+
+        public static ViewManager Instance => _instance ?? (_instance = new ViewManager());
+
+        public void Init()
         {
             EventBus.Bus.GetEvent<OpenLogFile>().Subscribe(AddDocument);
 

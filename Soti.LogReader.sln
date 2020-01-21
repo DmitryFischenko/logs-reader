@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soti.LogReader.GUI", "Soti.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soti.LogReader.Viewer", "Soti.LogReader.Viewer\Soti.LogReader.Viewer.csproj", "{A8DAF198-08B2-44C9-AE20-9DFAF07008B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soti.CommTracer", "Soti.CommTracer\Soti.CommTracer.csproj", "{5EE084F0-8E12-4C6A-B495-346C3DFFC11E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{A8DAF198-08B2-44C9-AE20-9DFAF07008B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8DAF198-08B2-44C9-AE20-9DFAF07008B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8DAF198-08B2-44C9-AE20-9DFAF07008B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EE084F0-8E12-4C6A-B495-346C3DFFC11E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EE084F0-8E12-4C6A-B495-346C3DFFC11E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EE084F0-8E12-4C6A-B495-346C3DFFC11E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EE084F0-8E12-4C6A-B495-346C3DFFC11E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

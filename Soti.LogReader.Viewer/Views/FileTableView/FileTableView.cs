@@ -34,7 +34,7 @@ namespace Soti.LogReader.Viewer.Views.FileTableView
                 filtersCb.Items.Add(new CustomFilter()
                 {
                     Title = "Comm",
-                    Predicate = o => o.Message.StartsWith("CCommAddr::")
+                    Predicate = o => o.Message.Contains("Comm.Client.")
                 });
             }
 
@@ -85,11 +85,11 @@ namespace Soti.LogReader.Viewer.Views.FileTableView
                         }
                     case Level.Warn:
                     case Level.Warning:
-                    {
                         {
-                            item.ForeColor = Color.OrangeRed;
-                            break;
-                        }
+                            {
+                                item.ForeColor = Color.OrangeRed;
+                                break;
+                            }
                         }
                 }
             };
@@ -312,6 +312,11 @@ namespace Soti.LogReader.Viewer.Views.FileTableView
         private void btnShowOnlyNew_Click(object sender, EventArgs e)
         {
             _showOnlyNewRecords = btnShowOnlyNew.Checked;
+        }
+
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
     }
 

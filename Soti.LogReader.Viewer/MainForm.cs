@@ -1,7 +1,9 @@
 ﻿using Soti.LogReader.Configuration;
 using Soti.LogReader.Viewer.Views;
 using System.Windows.Forms;
+using Soti.CommTracer;
 using Soti.LogReader.Viewer.Modules;
+using Soti.LogReader.Viewer.Views.CommTracerView;
 using Soti.LogReader.Viewer.Views.FilesTreeView;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -9,8 +11,6 @@ namespace Soti.LogReader.Viewer
 {
     public partial class FrmMain : Form
     {
-        ViewManager _manager = new ViewManager();
-
         public FrmMain()
         {
             InitializeComponent();
@@ -22,6 +22,8 @@ namespace Soti.LogReader.Viewer
 
         private void Init()
         {
+            ViewManager.Instance.Init();
+
             EventBus.Bus.GetEvent<AddView>()
                 .Subscribe((view) => view.Show(dockPanel, DockState.Document));
 
@@ -45,6 +47,12 @@ namespace Soti.LogReader.Viewer
         private void btnConfigureLogs_Click(object sender, System.EventArgs e)
         {
             LoggingConfigManager.TurnOffBufferedLogAppenders();
+        }
+
+        private void toolStripButton1_Click(object sender, System.EventArgs e)
+        {
+            var commTracerView = new CommTracerView();
+            commTracerView.Show(dockPanel, DockState.Document);
         }
     }
 }

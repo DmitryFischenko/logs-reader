@@ -31,8 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.btnConfigureLogs = new System.Windows.Forms.ToolStripButton();
+            this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,21 +48,13 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnConfigureLogs});
+            this.btnConfigureLogs,
+            this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(941, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolbarMain";
-            // 
-            // dockPanel
-            // 
-            this.dockPanel.AllowDrop = true;
-            this.dockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dockPanel.Location = new System.Drawing.Point(0, 25);
-            this.dockPanel.Name = "dockPanel";
-            this.dockPanel.Size = new System.Drawing.Size(941, 452);
-            this.dockPanel.TabIndex = 2;
             // 
             // btnConfigureLogs
             // 
@@ -72,6 +65,25 @@
             this.btnConfigureLogs.Size = new System.Drawing.Size(23, 22);
             this.btnConfigureLogs.Text = "Turn off buffered log appenders for MS and DS";
             this.btnConfigureLogs.Click += new System.EventHandler(this.btnConfigureLogs_Click);
+            // 
+            // dockPanel
+            // 
+            this.dockPanel.AllowDrop = true;
+            this.dockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dockPanel.Location = new System.Drawing.Point(0, 25);
+            this.dockPanel.Name = "dockPanel";
+            this.dockPanel.Size = new System.Drawing.Size(941, 452);
+            this.dockPanel.TabIndex = 2;
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // FrmMain
             // 
@@ -99,6 +111,7 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;
         private System.Windows.Forms.ToolStripButton btnConfigureLogs;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
 

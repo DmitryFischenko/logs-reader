@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="EventBus.cs" />
     <Compile Include="Events.cs" />
+    <Compile Include="JsonHelper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +78,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CommTracerView\CommTracerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CommTracerView\CommTracerView.Designer.cs">
+      <DependentUpon>CommTracerView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\EntryTextView.cs">
       <SubType>Form</SubType>
@@ -116,6 +123,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\CommTracerView\CommTracerView.resx">
+      <DependentUpon>CommTracerView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\EntryTextView.resx">
       <DependentUpon>EntryTextView.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,6 +162,10 @@
     <None Include="Resources\icons8-add-file-50.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Soti.CommTracer\Soti.CommTracer.csproj">
+      <Project>{5ee084f0-8e12-4c6a-b495-346c3dffc11e}</Project>
+      <Name>Soti.CommTracer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Soti.LogReader\Soti.LogReader.csproj">
       <Project>{1496167E-F02A-43EF-B957-A40DDD1B63C5}</Project>
       <Name>Soti.LogReader</Name>
